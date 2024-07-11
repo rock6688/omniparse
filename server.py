@@ -53,6 +53,7 @@ def main():
     app.include_router(media_router, prefix="/parse_media", tags=["Media"], include_in_schema=args.media)
     app.include_router(website_router, prefix="/parse_website", tags=["Website"], include_in_schema=args.web)
     
+    demo_ui.launch(share=True)
     
     # Start the server
     import uvicorn
