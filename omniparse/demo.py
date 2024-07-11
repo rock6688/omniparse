@@ -524,6 +524,7 @@ with demo_ui:
     media_button.click(fn=parse_media,inputs=[media_file, media_parameter] , outputs=[media_markdown, media_images, media_chunks, media_json])
     crawl_button.click(fn=parse_website , inputs=[crawl_url] , outputs=[crawl_markdown,crawl_html,crawl_image,crawl_json])
 
+demo_ui.launch(share=True)
 
 # # local processing
 # def process_document(input_file, parameters):
