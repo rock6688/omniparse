@@ -9,7 +9,7 @@ original_get = requests.get
 def patched_get(url, *args, **kwargs):
     # 检查并替换 URL
     if url.startswith("https://huggingface.co/"):
-        url = url.replace("https://huggingface.co/", "https://mirror.huggingface.co/")
+        url = url.replace("https://huggingface.co/", "https://hf-mirror.com/")
     # 调用原始的 get 方法
     return original_get(url, *args, **kwargs)
 
@@ -21,7 +21,7 @@ original_post = requests.post
 
 def patched_post(url, *args, **kwargs):
     if url.startswith("https://huggingface.co/"):
-        url = url.replace("https://huggingface.co/", "https://mirror.huggingface.co/")
+        url = url.replace("https://huggingface.co/", "https://hf-mirror.com/")
     return original_post(url, *args, **kwargs)
 
 requests.post = patched_post
@@ -41,7 +41,7 @@ import requests
 def main():
     # 测试请求
     response = requests.get('https://huggingface.co/vikp/surya_det3/resolve/main/config.json')
-    print(response.url)  # 应该输出 'https://mirror.huggingface.co/vikp/surya_det3/resolve/main/config.json'
+    print(response.url)  # 应该输出 'https://hf-mirror.com/vikp/surya_det3/resolve/main/config.json'
     print(response.json())
 
 if __name__ == "__main__":
